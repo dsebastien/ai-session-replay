@@ -1,0 +1,105 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Windows quality gate
+    runs-on: windows-2022
+    timeout-minutes: 90
+    env:
+      RUST_TEST_THREADS: "1"
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+
+      - name: Configure deterministic temporary directory
+        shell: pwsh
+        run: |
+          $systemTemp = Join-Path $env:USERPROFILE "AppData\Local\Temp"
+          New-Item -ItemType Directory -Force -Path $systemTemp | Out-Null
+          "TEMP=$systemTemp" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          "TMP=$systemTemp" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
+      - name: Install Bun 1.4.0
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6
+        with:
+          bun-version: 1.4.0
+
+      - name: Install Rust toolchains
+        shell: pwsh
+        run: |
+          rustup toolchain install 1.90.0 --profile minimal --component llvm-tools-preview,rustfmt,clippy --target x86_64-pc-windows-msvc
+          rustup toolchain install nightly-2025-09-18-x86_64-pc-windows-msvc --profile minimal --component llvm-tools-preview
+
+      - name: Install Rust coverage tool
+        run: cargo install cargo-llvm-cov --version 0.9.0 --locked
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Audit dependencies
+        shell: pwsh
+        run: |
+          for ($attempt = 1; $attempt -le 3; $attempt++) {
+            bun audit
+            $auditExitCode = $LASTEXITCODE
+            if ($auditExitCode -eq 0) {
+              exit 0
+            }
+            if ($attempt -eq 3) {
+              exit $auditExitCode
+            }
+            Start-Sleep -Seconds (15 * $attempt)
+          }
+
+      - name: Prepare verified render runtime
+        run: |
+          bun run prepare:render-runtime
+          bun run stage:render-worker
+
+      - name: Check Rust formatting
+        run: cargo fmt --manifest-path src-tauri/Cargo.toml -- --check
+
+      - name: Run Clippy
+        run: cargo clippy --manifest-path src-tauri/Cargo.toml --all-targets --all-features -- -D warnings
+
+      - name: Type check
+        run: bun run typecheck
+
+      - name: Test TypeScript with coverage
+        run: bun run test:coverage
+
+      - name: Test Rust on the hosted Windows runner
+        shell: pwsh
+        run: |
+          # These four tests require native local-volume, reparse-point, and
+          # nested Job Object behavior that GitHub-hosted Windows does not
+          # provide deterministically. They remain mandatory in `bun run check`.
+          cargo test --manifest-path src-tauri/Cargo.toml --lib -- `
+            --test-threads=1 `
+            --skip commands::runtime::tests::backend_publishes_verified_staging_without_overwriting `
+            --skip io::local_path::tests::follows_a_user_selected_local_directory_redirect_for_export `
+            --skip io::snapshot::tests::rejects_same_length_overwrites `
+            --skip runtime_integration_tests::terminates_a_worker_process_tree_that_exceeds_the_stderr_limit
+
+      - name: Test desktop database restart
+        run: cargo test --manifest-path src-tauri/Cargo.toml --test database_plugin_startup --features startup-test -- --test-threads=1
+
+      - name: Check Rust branch coverage
+        run: bun run check:coverage
+
+      - name: Build production bundles
+        run: bun run build

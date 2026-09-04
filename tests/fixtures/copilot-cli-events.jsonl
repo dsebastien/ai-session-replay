@@ -1,0 +1,6 @@
+{"type":"session.start","data":{"copilotVersion":"1.0.81","startTime":"2026-08-21T08:30:00Z","context":{"cwd":"C:\\synthetic\\project"}},"id":"event-001","timestamp":"2026-08-21T08:30:00Z","parentId":null}
+{"type":"user.message","data":{"content":"Create a synthetic note.","transformedContent":"private transformed prompt must be ignored"},"id":"event-002","timestamp":"2026-08-21T08:30:01Z","parentId":"event-001"}
+{"type":"assistant.message","data":{"content":"I will update the sample file."},"id":"event-003","timestamp":"2026-08-21T08:30:02Z","parentId":"event-002"}
+{"type":"tool.execution_start","data":{"toolCallId":"tool-001","toolName":"edit","arguments":{"path":"src/synthetic-note.txt","content":"private tool input must be ignored"}},"id":"event-004","timestamp":"2026-08-21T08:30:03Z","parentId":"event-003"}
+{"type":"tool.execution_complete","data":{"toolCallId":"tool-001","success":true,"result":{"content":"private tool output must be ignored"}},"id":"event-005","timestamp":"2026-08-21T08:30:04Z","parentId":"event-004"}
+{"type":"future.event","data":{"privatePayload":"private future payload must be ignored"},"id":"event-006","timestamp":"2026-08-21T08:30:05Z","parentId":"event-005"}

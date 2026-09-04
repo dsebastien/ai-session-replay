@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "platform": "windows-x64",
+  "artifacts": {
+    "bun": {
+      "version": "1.4.0",
+      "url": "https://github.com/oven-sh/bun/releases/download/bun-v1.4.0/bun-windows-x64.zip",
+      "sha256": "e6f093d39da486b20262ca8cdd5ed6a9e8bc9c2f275b78e6d3a0c5b28cc95901",
+      "size": 40060247,
+      "format": "zip",
+      "archiveRoot": "bun-windows-x64"
+    },
+    "chromeHeadlessShell": {
+      "version": "149.0.7790.0",
+      "url": "https://storage.googleapis.com/chrome-for-testing-public/149.0.7790.0/win64/chrome-headless-shell-win64.zip",
+      "sha256": "8a112c0e768907ff382ff994dcde35cdbd0e1f5a3a475da93d3a83e3260e78c2",
+      "size": 118785025,
+      "format": "zip",
+      "archiveRoot": "chrome-headless-shell-win64"
+    },
+    "remotionCompositor": {
+      "version": "4.0.516",
+      "url": "https://registry.npmjs.org/@remotion/compositor-win32-x64-msvc/-/compositor-win32-x64-msvc-4.0.516.tgz",
+      "sha256": "946cdc35b2d08ca83e2d4bf66f1c23656cd321ce90d8bdfee72d2ff10d8c502e",
+      "size": 11101157,
+      "format": "tgz",
+      "archiveRoot": "package"
+    }
+  }
+}

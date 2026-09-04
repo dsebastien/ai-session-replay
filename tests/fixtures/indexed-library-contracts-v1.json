@@ -1,0 +1,405 @@
+{
+  "listRequest": {
+    "schemaVersion": 1,
+    "source": "codex",
+    "query": "replay",
+    "sortOrder": "newest",
+    "cursor": "newest__cursor_01",
+    "pageSize": 50
+  },
+  "sessionPage": {
+    "schemaVersion": 1,
+    "sortOrder": "newest",
+    "items": [
+      {
+        "schemaVersion": 1,
+        "sessionId": "session_01",
+        "source": "codex",
+        "title": "Build the indexed library",
+        "createdAtMs": 1788163200000,
+        "lastIndexedAtMs": 1788163260000,
+        "sourcePresent": true,
+        "entryCount": 7,
+        "selectedEntryCount": 6,
+        "durationMs": 6000,
+        "diagnosticCount": 1,
+        "contentAvailability": {
+          "reasoning": "available",
+          "toolDetails": "partial"
+        }
+      }
+    ],
+    "nextCursor": null
+  },
+  "sessionDetail": {
+    "schemaVersion": 1,
+    "summary": {
+      "schemaVersion": 1,
+      "sessionId": "session_01",
+      "source": "codex",
+      "title": "Build the indexed library",
+      "createdAtMs": 1788163200000,
+      "lastIndexedAtMs": 1788163260000,
+      "sourcePresent": true,
+      "entryCount": 7,
+      "selectedEntryCount": 6,
+      "durationMs": 6000,
+      "diagnosticCount": 1,
+      "contentAvailability": {
+        "reasoning": "available",
+        "toolDetails": "partial"
+      }
+    },
+    "revision": {
+      "schemaVersion": 1,
+      "revisionId": "revision_01",
+      "sessionId": "session_01",
+      "indexedAtMs": 1788163260000,
+      "entryCount": 7,
+      "durationMs": 6000,
+      "diagnosticCount": 1
+    },
+    "entryPage": {
+      "schemaVersion": 1,
+      "sessionId": "session_01",
+      "revisionId": "revision_01",
+      "entries": [
+        {
+          "entry": {
+            "entryKey": "entry_01",
+            "ordinal": 0,
+            "atMs": 0,
+            "kind": "user",
+            "text": "Build this safely"
+          },
+          "selected": true
+        },
+        {
+          "entry": {
+            "entryKey": "entry_02",
+            "ordinal": 1,
+            "atMs": 1000,
+            "kind": "assistant",
+            "markdown": "I will define the contract first."
+          },
+          "selected": true
+        },
+        {
+          "entry": {
+            "entryKey": "entry_03",
+            "ordinal": 2,
+            "atMs": 2000,
+            "kind": "reasoning",
+            "text": "Check every trust boundary."
+          },
+          "selected": true
+        },
+        {
+          "entry": {
+            "entryKey": "entry_04",
+            "ordinal": 3,
+            "atMs": 3000,
+            "kind": "tool-call",
+            "name": "read_file",
+            "status": "succeeded",
+            "summary": "Read one synthetic fixture",
+            "detail": {
+              "availability": "available",
+              "arguments": "fixture.json",
+              "result": "7 entries"
+            }
+          },
+          "selected": true
+        },
+        {
+          "entry": {
+            "entryKey": "entry_05",
+            "ordinal": 4,
+            "atMs": 4000,
+            "kind": "tool-call",
+            "name": "unknown_tool",
+            "status": "failed",
+            "summary": "Details were not retained",
+            "detail": {
+              "availability": "unavailable"
+            }
+          },
+          "selected": false
+        },
+        {
+          "entry": {
+            "entryKey": "entry_06",
+            "ordinal": 5,
+            "atMs": 5000,
+            "kind": "file-change",
+            "displayPath": "src/session.ts",
+            "summary": "Modified synthetic source"
+          },
+          "selected": true
+        },
+        {
+          "entry": {
+            "entryKey": "entry_07",
+            "ordinal": 6,
+            "atMs": 6000,
+            "kind": "unknown",
+            "sourceType": "future-record"
+          },
+          "selected": true
+        }
+      ],
+      "nextCursor": null,
+      "totalEntryCount": 7
+    },
+    "preferences": {
+      "schemaVersion": 1,
+      "visibility": {
+        "showToolCalls": true,
+        "showToolDetails": false,
+        "showReasoning": true
+      },
+      "timing": {
+        "entryDelayMs": 1000,
+        "playbackSpeed": 1.0
+      },
+      "appearance": {
+        "theme": {
+          "background": "#101211",
+          "surface": "#171A18",
+          "text": "#F5F5F4",
+          "muted": "#9B9E9C",
+          "accent": "#D6AA68",
+          "success": "#A8D5BD",
+          "error": "#E59A91"
+        },
+        "font": {
+          "family": "JetBrains Mono",
+          "sizePx": 34,
+          "lineHeight": 1.5
+        }
+      }
+    }
+  },
+  "selectionRequest": {
+    "schemaVersion": 1,
+    "sessionId": "session_01",
+    "revisionId": "revision_01",
+    "changes": [
+      {
+        "entryKey": "entry_05",
+        "selected": false
+      }
+    ]
+  },
+  "renameRequest": {
+    "schemaVersion": 1,
+    "sessionId": "session_01",
+    "title": "Renamed locally"
+  },
+  "preferencesRequest": {
+    "schemaVersion": 1,
+    "sessionId": "session_01",
+    "revisionId": "revision_01",
+    "preferences": {
+      "schemaVersion": 1,
+      "visibility": {
+        "showToolCalls": true,
+        "showToolDetails": false,
+        "showReasoning": true
+      },
+      "timing": {
+        "entryDelayMs": 1000,
+        "playbackSpeed": 1.0
+      },
+      "appearance": {
+        "theme": {
+          "background": "#101211",
+          "surface": "#171A18",
+          "text": "#F5F5F4",
+          "muted": "#9B9E9C",
+          "accent": "#D6AA68",
+          "success": "#A8D5BD",
+          "error": "#E59A91"
+        },
+        "font": {
+          "family": "JetBrains Mono",
+          "sizePx": 34,
+          "lineHeight": 1.5
+        }
+      }
+    }
+  },
+  "refreshState": {
+    "schemaVersion": 1,
+    "status": "running",
+    "generation": 4,
+    "startedAtMs": 1788163260000,
+    "discoveredCount": 12,
+    "processedCount": 7,
+    "indexedCount": 2,
+    "unchangedCount": 4,
+    "failedCount": 1,
+    "skippedCount": 0,
+    "warningCount": 2
+  },
+  "libraryDeletionRequest": {
+    "schemaVersion": 1,
+    "mode": "library-only",
+    "sessionId": "session_01"
+  },
+  "prepareSourceDeletionRequest": {
+    "schemaVersion": 1,
+    "mode": "prepare-source-deletion",
+    "sessionId": "session_01"
+  },
+  "sourceDeletionConfirmation": {
+    "schemaVersion": 1,
+    "sessionId": "session_01",
+    "confirmationToken": "delete_token_01",
+    "artifactCount": 1,
+    "expiresAtMs": 1788163320000
+  },
+  "sourceDeletionRequest": {
+    "schemaVersion": 1,
+    "mode": "library-and-source",
+    "sessionId": "session_01",
+    "confirmationToken": "delete_token_01"
+  },
+  "restoreRequest": {
+    "schemaVersion": 1,
+    "suppressionId": "suppression_01"
+  },
+  "suppressedSource": {
+    "schemaVersion": 1,
+    "suppressionId": "suppression_01",
+    "source": "codex",
+    "sourceDeleted": false,
+    "suppressedAtMs": 1788163330000
+  },
+  "suppressedSourceListRequest": {
+    "schemaVersion": 1,
+    "cursor": null,
+    "pageSize": 50
+  },
+  "suppressedSourcePage": {
+    "schemaVersion": 1,
+    "items": [
+      {
+        "schemaVersion": 1,
+        "suppressionId": "suppression_01",
+        "source": "codex",
+        "sourceDeleted": false,
+        "suppressedAtMs": 1788163330000
+      }
+    ],
+    "nextCursor": null
+  },
+  "restoreResult": {
+    "schemaVersion": 1,
+    "suppressionId": "suppression_01"
+  },
+  "resetRequest": {
+    "schemaVersion": 1,
+    "mode": "reset-local-database"
+  },
+  "resetResult": {
+    "schemaVersion": 1,
+    "resetAtMs": 1788163400000
+  },
+  "presentationPlan": {
+    "schemaVersion": 1,
+    "planId": "plan_01",
+    "sessionId": "session_01",
+    "revisionId": "revision_01",
+    "sessionTitle": "Build the indexed library",
+    "createdAtMs": 1788163270000,
+    "entries": [
+      {
+        "entry": {
+          "entryKey": "entry_01",
+          "ordinal": 0,
+          "atMs": 0,
+          "kind": "user",
+          "text": "Build this safely"
+        },
+        "revealAtMs": 0
+      },
+      {
+        "entry": {
+          "entryKey": "entry_02",
+          "ordinal": 1,
+          "atMs": 1000,
+          "kind": "assistant",
+          "markdown": "I will define the contract first."
+        },
+        "revealAtMs": 1000
+      },
+      {
+        "entry": {
+          "entryKey": "entry_03",
+          "ordinal": 2,
+          "atMs": 2000,
+          "kind": "reasoning",
+          "text": "Check every trust boundary."
+        },
+        "revealAtMs": 2000
+      },
+      {
+        "entry": {
+          "entryKey": "entry_04",
+          "ordinal": 3,
+          "atMs": 3000,
+          "kind": "tool-call",
+          "name": "read_file",
+          "status": "succeeded",
+          "summary": "Read one synthetic fixture",
+          "detail": null
+        },
+        "revealAtMs": 3000
+      },
+      {
+        "entry": {
+          "entryKey": "entry_06",
+          "ordinal": 5,
+          "atMs": 5000,
+          "kind": "file-change",
+          "displayPath": "src/session.ts",
+          "summary": "Modified synthetic source"
+        },
+        "revealAtMs": 4000
+      }
+    ],
+    "preferences": {
+      "schemaVersion": 1,
+      "visibility": {
+        "showToolCalls": true,
+        "showToolDetails": false,
+        "showReasoning": true
+      },
+      "timing": {
+        "entryDelayMs": 1000,
+        "playbackSpeed": 1.0
+      },
+      "appearance": {
+        "theme": {
+          "background": "#101211",
+          "surface": "#171A18",
+          "text": "#F5F5F4",
+          "muted": "#9B9E9C",
+          "accent": "#D6AA68",
+          "success": "#A8D5BD",
+          "error": "#E59A91"
+        },
+        "font": {
+          "family": "JetBrains Mono",
+          "sizePx": 34,
+          "lineHeight": 1.5
+        }
+      }
+    },
+    "durationMs": 5000,
+    "fps": 30,
+    "width": 1920,
+    "height": 1080
+  }
+}

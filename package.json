@@ -1,0 +1,68 @@
+{
+  "name": "ai-session-replay",
+  "version": "0.0.1",
+  "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dsebastien/ai-session-replay.git"
+  },
+  "homepage": "https://github.com/dsebastien/ai-session-replay#readme",
+  "bugs": {
+    "url": "https://github.com/dsebastien/ai-session-replay/issues"
+  },
+  "type": "module",
+  "packageManager": "bun@1.4.0",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "bun --bun vite",
+    "build": "bun run build:ui && bun run build:worker",
+    "build:ui": "tsc -p tsconfig.app.json && bun --bun vite build",
+    "build:worker": "bun run --cwd packages/render-worker build",
+    "build:composition": "bun scripts/build-composition.ts",
+    "prepare:render-runtime": "bun run build:composition && bun scripts/prepare-render-runtime.ts",
+    "stage:render-worker": "bun run build:worker && bun scripts/stage-render-worker.ts",
+    "typecheck": "tsc -p tsconfig.app.json --noEmit && tsc -p packages/replay-contract/tsconfig.json --noEmit && tsc -p packages/replay-engine/tsconfig.json --noEmit && tsc -p packages/remotion-composition/tsconfig.json --noEmit && tsc -p packages/render-worker/tsconfig.json --noEmit && tsc -p scripts/tsconfig.json --noEmit",
+    "test": "bun --bun vitest run",
+    "test:coverage": "bun --bun vitest run --coverage",
+    "test:rust": "cargo test --manifest-path src-tauri/Cargo.toml && cargo test --manifest-path src-tauri/Cargo.toml --test database_plugin_startup --features startup-test",
+    "check:coverage": "node scripts/check-rust-coverage.mjs",
+    "check:visual-equivalence": "bun scripts/check-presentation-export-equivalence.ts",
+    "check:runtime-smoke": "pwsh -NoProfile -File scripts/check-installed-runtime.ps1",
+    "check:release": "bun run check && bun run prepare:render-runtime && bun run check:visual-equivalence && bun run tauri build --bundles nsis && bun run check:runtime-smoke",
+    "tauri": "bun --bun node_modules/@tauri-apps/cli/tauri.js",
+    "check": "bun run typecheck && bun run test:coverage && bun run test:rust && bun run check:coverage && bun run build"
+  },
+  "dependencies": {
+    "@remotion/fonts": "4.0.516",
+    "@tauri-apps/api": "2.11.1",
+    "@tauri-apps/plugin-dialog": "2.7.2",
+    "clsx": "2.1.1",
+    "lucide-react": "1.34.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "remotion": "4.0.516"
+  },
+  "devDependencies": {
+    "@remotion/bundler": "4.0.516",
+    "@remotion/cli": "4.0.516",
+    "@remotion/renderer": "4.0.516",
+    "@tailwindcss/vite": "4.3.3",
+    "@tauri-apps/cli": "2.11.4",
+    "@testing-library/dom": "10.4.1",
+    "@testing-library/react": "16.3.2",
+    "@types/bun": "1.4.0",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.5",
+    "@vitejs/plugin-react": "6.1.0",
+    "@vitest/coverage-istanbul": "4.1.11",
+    "axe-core": "4.10.3",
+    "jsdom": "30.0.1",
+    "tailwindcss": "4.3.3",
+    "typescript": "7.0.2",
+    "vite": "8.2.2",
+    "vitest": "4.1.11"
+  }
+}

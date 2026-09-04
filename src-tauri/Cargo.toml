@@ -1,0 +1,55 @@
+[package]
+name = "ai-session-replay"
+version = "0.0.1"
+description = "Local-first editor for AI coding session replays"
+authors = ["AI Session Replay contributors"]
+edition = "2024"
+license = "MIT"
+repository = "https://github.com/dsebastien/ai-session-replay"
+homepage = "https://github.com/dsebastien/ai-session-replay"
+rust-version = "1.90"
+
+[lib]
+name = "ai_session_replay_lib"
+crate-type = ["lib", "cdylib", "staticlib"]
+
+[[test]]
+name = "database_plugin_startup"
+path = "tests/database_plugin_startup.rs"
+required-features = ["startup-test"]
+
+[[bin]]
+name = "ai-session-replay"
+path = "src/main.rs"
+test = false
+bench = false
+
+[features]
+startup-test = ["tauri/test"]
+
+[build-dependencies]
+tauri-build = { version = "=2.6.3", features = [] }
+
+[dependencies]
+ruzstd = "=0.9.0"
+serde = { version = "=1.0.229", features = ["derive"] }
+serde_json = "=1.0.151"
+sha2 = "=0.10.9"
+sqlx = { version = "=0.8.6", default-features = false, features = ["migrate", "runtime-tokio", "sqlite"] }
+tauri = { version = "=2.11.5", features = [] }
+tauri-plugin-dialog = "=2.7.2"
+tauri-plugin-sql = { version = "=2.4.1", default-features = false, features = ["sqlite"] }
+time = { version = "=0.3.55", default-features = false, features = ["parsing"] }
+thiserror = "=2.0.20"
+tokio = { version = "=1.53.1", features = ["macros", "sync"] }
+windows-sys = { version = "=0.61.2", features = ["Win32_Foundation", "Win32_Security", "Win32_Storage_FileSystem", "Win32_System_IO", "Win32_System_JobObjects", "Win32_System_Pipes", "Win32_System_SystemInformation", "Win32_System_Threading", "Win32_System_WindowsProgramming"] }
+
+[profile.release]
+panic = "abort"
+codegen-units = 1
+lto = true
+opt-level = "s"
+strip = true
+
+[patch.crates-io]
+flate2 = { git = "https://github.com/rust-lang/flate2-rs.git", rev = "95b59d9315e08455edfec9234085fcc540767194" }

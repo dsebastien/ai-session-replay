@@ -1,0 +1,28 @@
+{
+  "valid": [
+    {
+      "schemaVersion": 1,
+      "pluginStatus": "not-detected",
+      "nativeTranscriptStatus": "unsupported",
+      "copilotCliStatus": "not-detected"
+    },
+    {
+      "schemaVersion": 1,
+      "pluginStatus": "detected",
+      "nativeTranscriptStatus": "unsupported",
+      "copilotCliStatus": "available-separately"
+    },
+    {
+      "schemaVersion": 1,
+      "pluginStatus": "unavailable",
+      "nativeTranscriptStatus": "unsupported",
+      "copilotCliStatus": "jetbrains-attributed"
+    },
+    {
+      "schemaVersion": 1,
+      "pluginStatus": "not-detected",
+      "nativeTranscriptStatus": "unsupported",
+      "copilotCliStatus": "unavailable"
+    }
+  ]
+}

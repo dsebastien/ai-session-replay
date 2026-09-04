@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 2,
+  "id": "fixture-rich-session",
+  "source": "codex",
+  "sourceVersion": "1.2.3",
+  "title": "Review a rich session",
+  "createdAt": "2026-08-24T08:00:00.000Z",
+  "cwd": "C:\\code\\replay",
+  "relationships": [
+    {
+      "kind": "parent",
+      "sessionId": "fixture-parent"
+    }
+  ],
+  "entries": [
+    {
+      "entryKey": "entry-user",
+      "atMs": 0,
+      "kind": "user",
+      "text": "Inspect <script>inert text</script>"
+    },
+    {
+      "entryKey": "entry-assistant",
+      "atMs": 1000,
+      "kind": "assistant",
+      "markdown": "I will inspect it as text."
+    },
+    {
+      "entryKey": "entry-reasoning",
+      "atMs": 1500,
+      "kind": "reasoning",
+      "text": "The source explicitly supplied this trace."
+    },
+    {
+      "entryKey": "entry-tool-available",
+      "atMs": 2000,
+      "kind": "tool-call",
+      "name": "read_file",
+      "status": "succeeded",
+      "summary": "Read the synthetic fixture",
+      "detail": {
+        "availability": "available",
+        "arguments": "{\"path\":\"fixture.txt\"}",
+        "result": "synthetic result"
+      }
+    },
+    {
+      "entryKey": "entry-tool-unavailable",
+      "atMs": 2500,
+      "kind": "tool-call",
+      "name": "legacy_tool",
+      "status": "pending",
+      "summary": "The legacy source omitted detail",
+      "detail": {
+        "availability": "unavailable"
+      }
+    },
+    {
+      "entryKey": "entry-file-change",
+      "atMs": 3000,
+      "kind": "file-change",
+      "displayPath": "src\\fixture.ts",
+      "summary": "Modified synthetic content"
+    },
+    {
+      "entryKey": "entry-unknown",
+      "atMs": 3500,
+      "kind": "unknown",
+      "sourceType": "future-record"
+    }
+  ],
+  "durationMs": 5000,
+  "diagnostics": [
+    {
+      "code": "PARTIAL_DETAIL",
+      "severity": "warning",
+      "message": "One synthetic tool record omitted detail"
+    }
+  ],
+  "unknownRecordCount": 1,
+  "contentAvailability": {
+    "reasoning": "available",
+    "toolDetails": "partial"
+  }
+}

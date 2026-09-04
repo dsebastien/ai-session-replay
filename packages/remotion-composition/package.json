@@ -1,0 +1,23 @@
+{
+  "name": "@ai-session-replay/remotion-composition",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./ConversationCard": "./src/ConversationCard.tsx",
+    "./ConversationStage": "./src/ConversationStage.tsx",
+    "./TerminalReplay": "./src/TerminalReplay.tsx"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@ai-session-replay/replay-contract": "workspace:*",
+    "@ai-session-replay/replay-engine": "workspace:*",
+    "@remotion/fonts": "4.0.516",
+    "react": "19.2.8",
+    "remotion": "4.0.516"
+  }
+}

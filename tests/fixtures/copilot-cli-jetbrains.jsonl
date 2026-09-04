@@ -1,0 +1,2 @@
+{"type":"session.start","data":{"sessionId":"synthetic-jetbrains-session","version":1,"producer":"copilot-agent","copilotVersion":"1.0.81","startTime":"2026-09-02T09:00:00Z","context":{"cwd":"C:\\synthetic\\project"}},"id":"event-start","timestamp":"2026-09-02T09:00:00Z","parentId":null}
+{"type":"user.message","data":{"content":"Open the synthetic project.","source":"jetbrains"},"id":"event-user","timestamp":"2026-09-02T09:00:01Z","parentId":"event-start"}

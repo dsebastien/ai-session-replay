@@ -1,0 +1,36 @@
+name: Feature request
+description: Propose a focused improvement to AI Session Replay.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What user problem should this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: Describe the smallest useful outcome rather than an implementation.
+    validations:
+      required: true
+  - type: textarea
+    id: boundaries
+    attributes:
+      label: Privacy and security impact
+      description: Note any new source format, filesystem access, process, network, or data-storage requirement.
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options:
+        - Windows 10/11 x64
+        - Future platform request
+        - Platform-independent
+    validations:
+      required: true

@@ -1,0 +1,7 @@
+{"timestamp":"2026-08-24T08:00:00.000Z","ordinal":0,"type":"session_meta","payload":{"session_id":"sess-codex-rich","timestamp":"2026-08-24T08:00:00.000Z","cwd":"C:\\code\\synthetic","cli_version":"1.2.3"}}
+{"timestamp":"2026-08-24T08:00:01.000Z","ordinal":1,"type":"response_item","payload":{"id":"msg-user-1","type":"message","role":"user","content":[{"type":"input_text","text":"Inspect <script>inert</script>"}]}}
+{"timestamp":"2026-08-24T08:00:02.000Z","ordinal":2,"type":"response_item","payload":{"id":"reason-1","type":"reasoning","summary":[{"type":"summary_text","text":"Check the explicit source data."}],"encrypted_content":"never persist this"}}
+{"timestamp":"2026-08-24T08:00:03.000Z","ordinal":3,"type":"response_item","payload":{"id":"call-item-1","type":"function_call","call_id":"call-1","name":"read_file","arguments":"{\"path\":\"synthetic.txt\"}"}}
+{"timestamp":"2026-08-24T08:00:04.000Z","ordinal":4,"type":"response_item","payload":{"id":"output-item-1","type":"function_call_output","call_id":"call-1","output":"synthetic output"}}
+{"timestamp":"2026-08-24T08:00:05.000Z","ordinal":5,"type":"response_item","payload":{"id":"msg-assistant-1","type":"message","role":"assistant","content":[{"type":"output_text","text":"Done."}]}}
+{"timestamp":"2026-08-24T08:00:06.000Z","ordinal":6,"type":"response_item","payload":{"id":"future-1","type":"future_item","private":"do not persist"}}

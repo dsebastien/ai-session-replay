@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "session": {
+    "schemaVersion": 1,
+    "id": "fixture-session",
+    "source": "codex",
+    "sourceVersion": null,
+    "title": "Create a replay",
+    "createdAt": "2026-08-24T08:00:00.000Z",
+    "cwd": "C:\\code\\replay",
+    "relationships": [
+      {
+        "kind": "parent",
+        "sessionId": "fixture-parent"
+      },
+      {
+        "kind": "fork",
+        "sessionId": "fixture-fork"
+      }
+    ],
+    "events": [
+      {
+        "id": "fixture-session:0:user",
+        "atMs": 0,
+        "kind": "user",
+        "text": "Create a replay"
+      },
+      {
+        "id": "fixture-session:1:assistant",
+        "atMs": 1000,
+        "kind": "assistant",
+        "markdown": "Working on it."
+      },
+      {
+        "id": "fixture-session:2:tool-running",
+        "atMs": 2000,
+        "kind": "tool",
+        "name": "read",
+        "status": "running",
+        "summary": "Reading the project"
+      },
+      {
+        "id": "fixture-session:3:tool-succeeded",
+        "atMs": 3000,
+        "kind": "tool",
+        "name": "edit",
+        "status": "succeeded",
+        "summary": "Updated the replay"
+      },
+      {
+        "id": "fixture-session:4:tool-failed",
+        "atMs": 4000,
+        "kind": "tool",
+        "name": "test",
+        "status": "failed",
+        "summary": "Found a regression"
+      },
+      {
+        "id": "fixture-session:5:file-change",
+        "atMs": 5000,
+        "kind": "file-change",
+        "path": "src\\replay.ts",
+        "summary": "Added deterministic timing"
+      },
+      {
+        "id": "fixture-session:6:unknown",
+        "atMs": 6000,
+        "kind": "unknown",
+        "sourceType": "future-event"
+      }
+    ],
+    "durationMs": 7500,
+    "diagnostics": [
+      {
+        "code": "SOURCE_VERSION",
+        "severity": "info",
+        "message": "Parsed a known source version"
+      },
+      {
+        "code": "PARTIAL_RECORD",
+        "severity": "warning",
+        "message": "Preserved a partially known record"
+      },
+      {
+        "code": "MALFORMED_RECORD",
+        "severity": "error",
+        "message": "Skipped one malformed source record"
+      }
+    ],
+    "unknownRecordCount": 1
+  },
+  "trim": {
+    "startMs": 0,
+    "endMs": 7500
+  },
+  "segments": [
+    {
+      "id": "segment-1",
+      "sourceStartMs": 0,
+      "sourceEndMs": 7500,
+      "speed": 1.0
+    }
+  ],
+  "theme": {
+    "background": "#101211",
+    "surface": "#171A18",
+    "text": "#F5F5F4",
+    "muted": "#9B9E9C",
+    "accent": "#D6AA68",
+    "success": "#A8D5BD",
+    "error": "#E59A91"
+  },
+  "font": {
+    "family": "JetBrains Mono",
+    "sizePx": 34,
+    "lineHeight": 1.5
+  },
+  "terminalHoldMs": 1500,
+  "fps": 30,
+  "width": 1920,
+  "height": 1080
+}

@@ -1,0 +1,69 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+  "productName": "AI Session Replay",
+  "version": "0.0.1",
+  "identifier": "dev.aisessionreplay.studio",
+  "build": {
+    "beforeDevCommand": "bun run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "bun run build:ui && bun run stage:render-worker",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "AI Session Replay",
+        "width": 1440,
+        "height": 900,
+        "minWidth": 320,
+        "minHeight": 480,
+        "dataDirectory": "webview-data-v1",
+        "resizable": true,
+        "fullscreen": false
+      }
+    ],
+    "security": {
+      "csp": {
+        "default-src": "'self' customprotocol: asset:",
+        "base-uri": "'none'",
+        "connect-src": "ipc: http://ipc.localhost",
+        "font-src": "'self' asset: http://asset.localhost",
+        "form-action": "'none'",
+        "frame-src": "'none'",
+        "img-src": "'self' asset: http://asset.localhost data:",
+        "media-src": "'self' blob:",
+        "object-src": "'none'",
+        "script-src": "'self'",
+        "style-src": "'self' 'unsafe-inline'"
+      },
+      "capabilities": ["main"]
+    }
+  },
+  "plugins": {
+    "sql": {
+      "preload": ["sqlite:session-library-v3.sqlite3"]
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis"],
+    "windows": {
+      "webviewInstallMode": {
+        "type": "offlineInstaller",
+        "silent": true
+      }
+    },
+    "externalBin": ["../.runtime/sidecars/render-worker-bun"],
+    "resources": {
+      "../.runtime/render-runtime/chrome-headless-shell/": "render-runtime/chrome-headless-shell/",
+      "../.runtime/render-runtime/composition/": "render-runtime/composition/",
+      "../.runtime/render-runtime/remotion/": "render-runtime/remotion/",
+      "../.runtime/render-runtime/runtime-layout.json": "render-runtime/runtime-layout.json",
+      "../.runtime/render-runtime/worker/": "render-runtime/worker/",
+      "../.runtime/render-runtime/worker-layout.json": "render-runtime/worker-layout.json",
+      "../THIRD_PARTY_NOTICES.md": "THIRD_PARTY_NOTICES.md",
+      "../node_modules/remotion/LICENSE.md": "REMOTION-LICENSE.md"
+    }
+  }
+}

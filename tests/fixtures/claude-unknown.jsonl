@@ -1,0 +1,2 @@
+{"type":"user","uuid":"message-user-unknown-fixture","parentUuid":null,"sessionId":"claude-session-unknown","timestamp":"2026-08-02T09:00:00Z","message":{"role":"user","content":"Exercise forward compatibility."}}
+{"type":"future-record","uuid":"future-record-1","parentUuid":"message-user-unknown-fixture","sessionId":"claude-session-unknown","timestamp":"2026-08-02T09:00:01Z","payload":{"futureField":"synthetic-value"}}

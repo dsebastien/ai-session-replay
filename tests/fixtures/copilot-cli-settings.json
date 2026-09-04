@@ -1,0 +1,5 @@
+{
+  "remote": "on",
+  "remoteExport": true,
+  "syntheticPrivateSetting": "must-not-appear-in-diagnostics"
+}

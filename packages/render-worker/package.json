@@ -1,0 +1,16 @@
+{
+  "name": "@ai-session-replay/render-worker",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "bun build src/index.ts --target=bun --outfile=dist/index.js",
+    "test": "bun --bun vitest run src",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@ai-session-replay/replay-contract": "workspace:*",
+    "@ai-session-replay/replay-engine": "workspace:*",
+    "@remotion/renderer": "4.0.516"
+  }
+}
